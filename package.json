@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A Sails hook for QuickBooks API",
   "main": "qb/index.js",
-  "dependencies": {},
+  "dependencies": {
+    "supertest": "^3.0.0"
+  },
   "devDependencies": {
     "mocha": "^3.2.0",
     "sails": "^0.12.13"
