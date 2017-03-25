@@ -1,5 +1,5 @@
 /**
- * qb hook
+ * QuickBooks API hook
  */
 
 module.exports = function (sails) {
