@@ -7,6 +7,7 @@
   [![bitHound Dependencies](https://www.bithound.io/github/sanjorgek/sails-hook-sanqb/badges/dependencies.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanqb/master/dependencies/npm)
   [![bitHound Dev Dependencies](https://www.bithound.io/github/sanjorgek/sails-hook-sanqb/badges/devDependencies.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanqb/master/dependencies/npm)
   [![bitHound Code](https://www.bithound.io/github/sanjorgek/sails-hook-sanqb/badges/code.svg)](https://www.bithound.io/github/sanjorgek/sails-hook-sanqb)
+  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c4375b17007f4afa9dddf1f1b256d676)](https://www.codacy.com/app/sanjorgek/sails-hook-sanqb?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sanjorgek/sails-hook-sanqb&amp;utm_campaign=Badge_Grade)
 
 ## About
 A Sails hook for QuickBooks API
