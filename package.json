@@ -4,18 +4,26 @@
   "description": "A Sails hook for QuickBooks API",
   "main": "qb/index.js",
   "dependencies": {
-    "supertest": "^3.0.0"
+    "async": "^2.2.0",
+    "debug": "^2.6.3",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "node-quickbooks": "^2.0.11"
   },
   "devDependencies": {
+    "@sailshq/lodash": "^3.10.2",
     "mocha": "^3.2.0",
-    "sails": "^0.12.13"
+    "sails": "^0.12.13",
+    "sails-disk": "^0.10.10",
+    "sails-hook-orm": "^1.0.9",
+    "supertest": "^3.0.0"
   },
   "sails": {
     "isHook": true,
-    "hookName": "sanqb"
+    "hookName": "quickbooks"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "DEBUG=sails:hook:sanqb mocha"
   },
   "repository": {
     "type": "git",
@@ -26,7 +34,8 @@
     "hook",
     "qb",
     "quickbooks",
-    "wrapper"
+    "wrapper",
+    "api"
   ],
   "author": "SanJorgeK",
   "license": "MIT",

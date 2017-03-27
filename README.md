@@ -11,4 +11,33 @@
   [![CircleCI](https://circleci.com/gh/sanjorgek/sails-hook-sanqb.svg?style=svg)](https://circleci.com/gh/sanjorgek/sails-hook-sanqb)
 
 ## About
-A Sails hook for QuickBooks API
+A Sails hook for QuickBooks API. Work with node v4 and v6, see ES6.
+
+## Settings
+Install
+
+```
+npm install sails-hook-sanqb
+```
+
+Define at `config/quickbooks.js`
+
+```js
+module.exports.quickbooks = {
+  consumerKey: "",
+  consumerSecret: "",
+  enableLogs: true,
+  companyModel: "foo" //default company
+}
+```
+
+Implement OAuth acces, see [oauth-node-js](https://github.com/IntuitDeveloper/oauth-node-js).
+
+## Use
+
+```js
+
+```
+
+### Aviable Functions
+See [node-quickbooks](https://www.npmjs.com/package/node-quickbooks) for more details
