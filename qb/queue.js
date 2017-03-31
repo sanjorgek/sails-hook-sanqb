@@ -1,15 +1,29 @@
 "use strict";
 
 const queue = require("async/queue");
-const _ = require("lodash");
-var QuickBooks = require("node-quickbooks"); // quickbooks sdk
+let QuickBooks = require("node-quickbooks"); // quickbooks sdk
 
-function execTask (task, cb) {
-
+function Queue(qbSettigs) {
+  this.q = queue(function (task, callback) {
+    let qbo = new QuickBooks(
+      qbSettigs.consumerKey,
+      qbSettigs.consumerSecret,
+      task.company.accessToken,
+      task.company.accessTokenSecret,
+      task.company.companyId,
+      task.useSandbox,
+      qbSettigs.eneableLogs);
+    let qboF = qbo[task.func];
+    if(typeof qboF === "function"){
+      /**
+       *
+       */
+    }else return callback(new Error("missing qb action"));
+  }, 1);
 }
 
-module.exports = {
-  newQs() {
-
-  }
+Queue.prototype.addTask = function(payload) {
+	this.q.push(payload);
 };
+
+module.exports = Queue;

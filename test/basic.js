@@ -4,7 +4,9 @@ const assert = require("assert");
 const _ = require("@sailshq/lodash");
 const Sails = require("sails").Sails;
 
-describe("with the appropriate adapter(s) and `migrate: safe`", function (){
+describe("Quickbooks hook", function(){
+
+  describe("test initialized", function (){
 
     // New up an instance of Sails.
     let app = new Sails();
@@ -14,20 +16,20 @@ describe("with the appropriate adapter(s) and `migrate: safe`", function (){
       app.load({
         globals: false,
         log: { level: "warn" },
-				hooks: {
+        hooks: {
           // Inject the orm hook in this repo into this Sails app
           quickbooks: require("../qb/index")
         },
         loadHooks: ["moduleloader", "userconfig", "orm", "quickbooks"],
         models: {
           migrate: "drop",
-					connection: "localDiskDb"
+          connection: "localDiskDb"
         },
-				connections: {
-					localDiskDb: {
-						adapter: "sails-disk"
-					}
-				},
+        connections: {
+          localDiskDb: {
+            adapter: "sails-disk"
+          }
+        },
         orm: {
           // THIS IS FOR EXPERIMENTAL USE ONLY!
           // (could change at any time)
@@ -44,11 +46,11 @@ describe("with the appropriate adapter(s) and `migrate: safe`", function (){
             }
           }
         },
-				quickbooks: {
-					accessToken: "",
-					accessTokenSecret: "",
-					companyId: ""
-				}
+        quickbooks: {
+          accessToken: "",
+          accessTokenSecret: "",
+          companyId: ""
+        }
       },done);
     });
 
@@ -73,8 +75,11 @@ describe("with the appropriate adapter(s) and `migrate: safe`", function (){
       assert(_.isObject(app.models.company), new Error("Should have a model under the `company` key"));
     });
 
-
-
+    it("should have an object at sails.Quickbooks", function() {
+      assert.equal(typeof app.quickbooks, "object");
+      assert.equal(typeof app.quickbooks.Queue, "object");
+      assert.equal(typeof app.quickbooks.Queue.addTask, "function");
+    });
 
     // Lower the app.
     after(function teardown(done) {
@@ -82,3 +87,5 @@ describe("with the appropriate adapter(s) and `migrate: safe`", function (){
     });
 
   });
+
+});

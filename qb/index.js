@@ -2,8 +2,8 @@
 /**
  * QuickBooks API hook
  */
-const queue = require("./queue");
 const debug = require("debug")("sails:hook:sanqb");
+const Queue = require("./queue");
 
 module.exports = function (sails) {
   return {
@@ -13,9 +13,6 @@ module.exports = function (sails) {
     configure(){
       if(!sails.config.quickbooks){
         sails.config.quickbooks = {};
-      }
-      if(!sails.config.quickbooks.companyModel){
-        sails.config.quickbooks.companyModel = "company";
       }
     },
 
@@ -29,7 +26,9 @@ module.exports = function (sails) {
       sails.after(["hook:orm:loaded"], function () {
         let qbSettings = sails.config.quickbooks;
         let companyModel = sails.models[qbSettings.companyModel];
-        
+        sails.quickbooks = {
+          Queue : new Queue(sails.config.quickbooks)
+        };
         return next();
       });
     }
